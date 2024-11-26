@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #message {
+            display: none;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .hint {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hint">I used to call you by this name</div>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+        <div id="message">Oii, Please call me message!</div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const message = document.getElementById('message');
+            
+            if (password.toLowerCase() === 'pitike') {
+                message.style.display = 'block';
+                document.getElementById('passwordInput').style.display = 'none';
+                document.querySelector('button').style.display = 'none';
+                document.querySelector('.hint').style.display = 'none';
+            } else {
+                alert('Incorrect password. Try again!');
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html> 
